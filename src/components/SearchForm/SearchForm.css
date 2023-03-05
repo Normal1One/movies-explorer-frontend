@@ -1,0 +1,123 @@
+.searchForm__input {
+  padding: 0;
+  border: none;
+  color: #A0A0A0;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #F9F9F9;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  height: 22px;
+  margin: 25px 0 25px 10px;
+  width: 726px;
+}
+
+.searchForm {
+  padding-bottom: 10px;
+  margin: 0 auto;
+}
+
+.searchForm__icon {
+  background-image: url(../../images/search.svg);
+  width: 34px;
+  height: 34px;
+  margin-left: 19px;
+  margin-top: 19px;
+}
+
+.searchForm__form {
+  max-width: 1140px;
+  background-color: #F9F9F9;
+  margin: 65px auto 69px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 9px;
+}
+
+.searchForm__submit {
+  background-image: url(../../images/submit.svg);
+  background-color: #F9F9F9;
+  border: none;
+  margin-top: 19px;
+  margin-left: 60px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.searchForm__submit:hover {
+  opacity: 0.75;
+}
+
+.searchForm__line {
+  margin-top: 16px;
+  margin-left: 30px;
+  height: 40px;
+  border: 1px solid #E8E8E8;
+}
+
+.searchForm__input:focus {
+  outline: none;
+}
+
+.searchForm__line-bottom {
+  max-width: 1140px;
+  height: 1px;
+  background-color: #E8E8E8;
+  margin: 10px auto 0;
+}
+
+@media screen and (max-width: 1140px) {
+  .searchForm__input {
+    width: 324px;
+  }
+  .searchForm {
+    max-width: 708px;
+  }
+  .searchForm__form {
+    margin-top: 94px;
+  }
+  .searchForm__line {
+    margin-left: 19px;
+  }
+  .searchForm__line-bottom {
+    margin-top: 109px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .searchForm__icon, .searchForm__line {
+    display: none;
+  }
+  .searchForm {
+    position: relative;
+    max-width: 300px;
+  }
+  .searchForm__form {
+    background-color: #FFFFFF;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .searchForm__input {
+    background-color: #F9F9F9;
+    max-width: 300px;
+    margin: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 19px;
+    font-size: 14px;
+    margin-bottom: 43px;
+    border-radius: 9px;
+  }
+  .searchForm__submit {
+    position: absolute;
+    margin: 0;
+    top: calc(50% - 80px);
+    right: 19px;
+  }
+  .searchForm__line-bottom {
+    margin-top: -32px;
+  }
+}

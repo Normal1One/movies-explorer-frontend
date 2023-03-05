@@ -1,0 +1,30 @@
+.moviesCardList {
+  max-width: 1140px;
+  margin: 70px auto 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(364px, 1fr));
+  grid-template-rows: auto;
+  gap: 30px 24px;
+  justify-items: center;
+}
+
+.moviesCardList_favorites {
+  margin-bottom: 170px;
+}
+
+@media screen and (max-width: 1140px) {
+  .moviesCardList {
+    grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
+    gap: 36px 30px;
+    max-width: 708px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .moviesCardList {
+    max-width: 300px;
+    grid-template-columns: 300px;
+    gap: 16px;
+    margin-top: 36px;
+  }
+}

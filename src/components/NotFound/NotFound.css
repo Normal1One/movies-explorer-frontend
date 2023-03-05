@@ -1,0 +1,54 @@
+.notFound__title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+  margin: 246px auto 5px;
+}
+
+.notFound__subtitle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin: 0 auto 184px;
+}
+
+.notFound__link {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 auto 60px;
+  color: #2BE080;
+  appearance: none;
+  border: none;
+  background-color: #FFFFFF;
+  outline: none;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .notFound__title {
+    margin-top: 309px;
+    font-size: 80px;
+    line-height: 97px;
+    margin-bottom: 10px;
+  }
+  .notFound__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 284px;
+  }
+  .notFound__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
