@@ -1,21 +1,27 @@
 .searchForm__input {
+  flex: 1;
   padding: 0;
   border: none;
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-family: 'Inter', Arial, sans-serif;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
   height: 22px;
   margin: 25px 0 25px 10px;
-  width: 726px;
+  outline: none;
+  max-width: 726px;
 }
 
 .searchForm {
   padding-bottom: 10px;
   margin: 0 auto;
+}
+
+.searchForm__input:focus {
+  border-bottom: #2be080 1px solid;
 }
 
 .searchForm__icon {
@@ -28,7 +34,7 @@
 
 .searchForm__form {
   max-width: 1140px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   margin: 65px auto 69px;
   display: flex;
   flex-direction: row;
@@ -37,7 +43,7 @@
 
 .searchForm__submit {
   background-image: url(../../images/submit.svg);
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border: none;
   margin-top: 19px;
   margin-left: 60px;
@@ -55,23 +61,19 @@
   margin-top: 16px;
   margin-left: 30px;
   height: 40px;
-  border: 1px solid #E8E8E8;
-}
-
-.searchForm__input:focus {
-  outline: none;
+  border: 1px solid #e8e8e8;
 }
 
 .searchForm__line-bottom {
   max-width: 1140px;
   height: 1px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   margin: 10px auto 0;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 768px) {
   .searchForm__input {
-    width: 324px;
+    width: 128px;
   }
   .searchForm {
     max-width: 708px;
@@ -87,8 +89,9 @@
   }
 }
 
-@media screen and (max-width: 767px) {
-  .searchForm__icon, .searchForm__line {
+@media screen and (max-width: 520px) {
+  .searchForm__icon,
+  .searchForm__line {
     display: none;
   }
   .searchForm {
@@ -96,12 +99,13 @@
     max-width: 300px;
   }
   .searchForm__form {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     flex-wrap: wrap;
     justify-content: center;
+    width: 290px;
   }
   .searchForm__input {
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     max-width: 300px;
     margin: 0;
     padding-top: 25px;

@@ -8,13 +8,13 @@
   padding: 0;
   display: block;
   width: 320px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 36px;
-  border: #E8E8E8 solid 1px;
+  border: #e8e8e8 solid 1px;
   margin: 0 auto 80px;
   cursor: pointer;
   border-radius: 9px;
@@ -24,7 +24,7 @@
   opacity: 0.75;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .moviesPreloader__button {
     max-width: 240px;
   }

@@ -30,7 +30,7 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   margin-bottom: 5px;
 }
 
@@ -45,24 +45,24 @@
   outline: none;
   border: none;
   padding-bottom: 10px;
-  border-bottom: #E8E8E8 1px solid;
+  border-bottom: #e8e8e8 1px solid;
 }
 
 .register__input:focus {
-  border-bottom: #2BE080 1px solid;
+  border-bottom: #2be080 1px solid;
 }
 
 .register__submit {
   appearance: none;
   outline: none;
   border: none;
-  background-color: #2BE080;
+  background-color: #2be080;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 45px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 128px;
   cursor: pointer;
 }
@@ -77,24 +77,24 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   max-width: 217px;
   margin: 16px auto 70px;
 }
 
 .register__link {
   text-decoration: none;
-  color: #2BE080;
+  color: #2be080;
 }
 
-.register__input_error {
-  color: #EE3465;
+.register__input-error {
+  color: #ee3465;
 }
 
-.register__form_error {
+.register__form-error {
   opacity: 0;
   margin: 0;
-  color: #EE3465;
+  color: #ee3465;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -104,7 +104,7 @@
   margin-bottom: 6px;
 }
 
-.register__form_error_visible {
+.register__form-error_visible {
   opacity: 1;
 }
 

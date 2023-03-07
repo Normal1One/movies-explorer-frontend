@@ -9,11 +9,11 @@
 .navigation__overlay {
   z-index: 3;
   width: 514px;
-  position: absolute;
+  position: fixed;
   height: 100%;
   top: 0;
   right: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .navigation__background {
@@ -36,7 +36,8 @@
   margin-top: 156px;
 }
 
-.navigation__link, .navigation__films {
+.navigation__link,
+.navigation__films {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -45,20 +46,22 @@
   margin-bottom: 28px;
 }
 
-.navigation__link, .navigation__films, .navigation__account {
+.navigation__link,
+.navigation__films,
+.navigation__account {
   text-decoration: none;
   color: #000000;
 }
 
 .navigation__films {
   text-decoration: underline #000000 2px;
-  text-underline-offset: 4px
+  text-underline-offset: 4px;
 }
 
 .navigation__account {
   line-height: 32px;
   border-radius: 20px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -73,7 +76,7 @@
 .navigation__button {
   padding: 0;
   background-image: url(../../images/close.svg);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: none;
   background-position: center;
   cursor: pointer;
@@ -86,7 +89,10 @@
   right: 22px;
 }
 
-.navigation__link:hover, .navigation__films:hover, .navigation__button:hover, .navigation__account:hover {
+.navigation__link:hover,
+.navigation__films:hover,
+.navigation__button:hover,
+.navigation__account:hover {
   opacity: 0.75;
 }
 
@@ -96,10 +102,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
-  .navigation__background {
-    display: none;
-  }
+@media screen and (max-width: 768px) {
   .navigation__overlay {
     width: 320px;
   }
@@ -112,10 +115,11 @@
     top: calc(100vh - 230px);
     left: 105px;
   }
-  .navigation__link, .navigation__films {
+  .navigation__link,
+  .navigation__films {
     margin-bottom: 24px;
   }
   .navigation__films {
-    text-underline-offset: 11px
+    text-underline-offset: 11px;
   }
 }

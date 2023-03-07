@@ -3,13 +3,20 @@
   margin: 100px auto 0;
 }
 
+.portfolio__projects {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 100px;
+}
+
 .portfolio__title {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   margin-bottom: 50px;
 }
 
@@ -19,6 +26,8 @@
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 19px;
+  text-decoration: none;
+  color: #000;
 }
 
 .portfolio__heading {
@@ -31,31 +40,24 @@
   letter-spacing: -0.04em;
 }
 
-.portfolio__project:last-child {
-  margin-bottom: 125px;
-}
-
-.portfolio__project:first-of-type {
-  margin-top: 0;
-}
-
-.portfolio__link {
+.portfolio__link-image {
   background-image: url(../../images/link.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 29px;
-  height: 60px;
+  height: 45px;
 }
 
-.portfolio__link:hover {
+.portfolio__link-image:hover {
   opacity: 0.75;
 }
 
-.portfilio__line {
-  border: 1px solid #E8E8E8;
+.portfolio__projects-line {
+  border: 1px solid #e8e8e8;
+  margin-top: 19px;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 768px) {
   .portfolio {
     max-width: 668px;
     margin-top: 90px;
@@ -64,19 +66,18 @@
     font-size: 28px;
     line-height: 50px;
   }
-  .portfolio__project:last-child {
-    margin-bottom: 90px;
+  .portfolio__projects {
+    margin-bottom: 65px;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 320px) {
   .portfolio {
     max-width: 292px;
     margin-top: 70px;
   }
-  .portfolio__link {
+  .portfolio__link-image {
     background-image: url(../../images/link-small.svg);
-    background-position: right top;
     width: 18px;
     height: 28px;
   }
@@ -88,12 +89,12 @@
     margin-bottom: 19px;
     height: 28px;
   }
-  .portfolio__project:last-child {
-    margin-bottom: 70px;
-  }
   .portfolio__title {
     margin-bottom: 40px;
     font-size: 14px;
     line-height: 20px;
+  }
+  .portfolio__projects {
+    margin-bottom: 45px;
   }
 }

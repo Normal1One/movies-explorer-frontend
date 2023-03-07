@@ -1,16 +1,35 @@
-import MoviesCard from '../MoviesCard/MoviesCard';
-import './MoviesCardList.css';
+import classNames from 'classnames'
+import { useLocation } from 'react-router-dom'
+import MoviesCard from '../MoviesCard/MoviesCard'
+import './MoviesCardList.css'
 
-function MoviesCardList({ favorites }) {
+function MoviesCardList() {
+  const location = useLocation()
+
   return (
-    <div className={`moviesCardList ${ favorites ? 'moviesCardList_favorites' : '' }`}>
-      <MoviesCard favorites={favorites} />
-      <MoviesCard favorites={favorites} />
-      <MoviesCard favorites={favorites} />
-      <MoviesCard favorites={favorites} />
-      <MoviesCard favorites={favorites} />
-    </div>
-  );
+    <ul
+      className={classNames({
+        moviesCardList: true,
+        moviesCardList_favorites: location.pathname === '/saved-movies',
+      })}
+    >
+      <li>
+        <MoviesCard />
+      </li>
+      <li>
+        <MoviesCard />
+      </li>
+      <li>
+        <MoviesCard />
+      </li>
+      <li>
+        <MoviesCard />
+      </li>
+      <li>
+        <MoviesCard />
+      </li>
+    </ul>
+  )
 }
 
-export default MoviesCardList;
+export default MoviesCardList

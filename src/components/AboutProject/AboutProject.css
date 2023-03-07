@@ -47,25 +47,25 @@
   margin-top: 110px;
 }
 
-.aboutProject__progress__back-end {
+.aboutProject__progress-back-end {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 36px;
   text-align: center;
-  background-color: #2BE080;
+  background-color: #2be080;
   width: 228px;
 }
 
-.aboutProject__progress__front-end {
+.aboutProject__progress-front-end {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 36px;
   text-align: center;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   width: 912px;
 }
 
@@ -74,9 +74,9 @@
   margin-bottom: 110px;
 }
 
-.aboutProject__steps__back-end {
+.aboutProject__steps-back-end {
   width: 228px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -86,10 +86,10 @@
   margin-top: 14px;
 }
 
-.aboutProject__steps__front-end {
+.aboutProject__steps-front-end {
   margin: 0;
   width: 912px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -99,6 +99,12 @@
 }
 
 @media screen and (max-width: 1140px) {
+  .aboutProject {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .aboutProject {
     margin-top: 90px;
     max-width: 668px;
@@ -122,7 +128,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 340px) {
   .aboutProject {
     margin-top: 70px;
     max-width: 284px;
@@ -149,21 +155,21 @@
     max-width: 284px;
     margin: 60px auto 0;
   }
-  .aboutProject__progress__back-end {
+  .aboutProject__progress-back-end {
     width: 100px;
     font-size: 11px;
   }
-  .aboutProject__progress__front-end {
+  .aboutProject__progress-front-end {
     width: 184px;
     font-size: 11px;
   }
-  .aboutProject__steps__back-end {
+  .aboutProject__steps-back-end {
     width: 100px;
     margin-top: 10px;
     line-height: 13px;
     font-size: 11px;
   }
-  .aboutProject__steps__front-end {
+  .aboutProject__steps-front-end {
     width: 184px;
     margin-top: 10px;
     line-height: 13px;

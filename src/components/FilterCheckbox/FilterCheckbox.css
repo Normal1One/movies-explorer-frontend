@@ -18,7 +18,7 @@
   width: 36px;
   height: 20px;
   margin-top: 26px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 20px;
   appearance: none;
   cursor: pointer;
@@ -27,17 +27,17 @@
 }
 
 .filterCheckbox__checkbox:checked {
-  border: solid 2px #2BE080;
-  box-shadow: inset 18px 0 0 0 #2BE080;
+  border: solid 2px #2be080;
+  box-shadow: inset 18px 0 0 0 #2be080;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 768px) {
   .filterCheckbox__checkbox {
     margin-left: 19px;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 520px) {
   .filterCheckbox__text {
     margin-top: 0;
     font-size: 11px;

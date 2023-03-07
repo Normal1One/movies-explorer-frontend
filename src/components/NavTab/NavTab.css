@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .navTab__link {
@@ -13,7 +13,7 @@
   font-weight: 500;
   line-height: 36px;
   text-align: center;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   border-radius: 10px;
   text-decoration: none;
   color: #000000;
@@ -24,7 +24,7 @@
   opacity: 0.75;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .navTab__link {
     border-radius: 6px;
     font-size: 10px;
@@ -33,6 +33,6 @@
   }
   .navTab {
     min-width: 258px;
-    margin-bottom: 17px
+    margin-bottom: 17px;
   }
 }

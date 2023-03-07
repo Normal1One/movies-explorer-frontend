@@ -1,14 +1,16 @@
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import './SavedMovies.css';
+import SearchForm from '../SearchForm/SearchForm'
+import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import './SavedMovies.css'
 
 function SavedMovies() {
   return (
-    <div className="savedMovies">
-      <SearchForm />
-      <MoviesCardList favorites={true} />
-    </div>
-  );
+    <main className='content'>
+      <section className='savedMovies'>
+        <SearchForm />
+        <MoviesCardList />
+      </section>
+    </main>
+  )
 }
 
-export default SavedMovies;
+export default SavedMovies

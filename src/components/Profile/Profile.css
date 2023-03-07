@@ -40,7 +40,7 @@
 }
 
 .profile__divider {
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   width: 420px;
   height: 1px;
   margin: 16px auto 17px;
@@ -57,7 +57,7 @@
   appearance: none;
   border: none;
   outline: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   cursor: pointer;
 }
 
@@ -68,13 +68,14 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #EE3465;
+  color: #ee3465;
   text-decoration: none;
   margin: 0 auto 70px;
   display: block;
 }
 
-.profile__submit:hover, .profile__logout:hover {
+.profile__submit:hover,
+.profile__logout:hover {
   opacity: 0.75;
 }
 
