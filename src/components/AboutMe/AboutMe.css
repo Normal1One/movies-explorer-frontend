@@ -89,7 +89,7 @@
   line-height: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .aboutMe {
     max-width: 668px;
     margin-top: 90px;
@@ -120,8 +120,6 @@
     margin-bottom: 66px;
   }
 }
-
-
 
 @media screen and (max-width: 690px) {
   .aboutMe {

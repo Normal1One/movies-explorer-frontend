@@ -15,6 +15,17 @@
   margin-bottom: 170px;
 }
 
+.moviesCardList__message {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 320px;
+  margin: 70px auto 80px;
+  text-align: center;
+}
+
 @media screen and (max-width: 1140px) {
   .moviesCardList {
     grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
@@ -23,7 +34,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .moviesCardList {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 16px;

@@ -16,6 +16,9 @@
   line-height: 18px;
   max-width: 280px;
   padding-top: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .moviesCard__button {
@@ -27,6 +30,7 @@
   appearance: none;
   cursor: pointer;
   margin: 19px 14px 0 auto;
+  padding: 0;
 }
 
 .moviesCard__button_favorites {
@@ -67,13 +71,16 @@
     width: 339px;
     height: 190px;
   }
+  .moviesCard__text {
+    max-width: 242px;
+  }
   .moviesCard {
     width: 339px;
     height: 258px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .moviesCard {
     width: 300px;
     height: 236px;

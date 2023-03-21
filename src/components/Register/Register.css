@@ -63,8 +63,9 @@
   font-size: 14px;
   line-height: 45px;
   color: #ffffff;
-  margin-top: 128px;
   cursor: pointer;
+  padding: 0;
+  margin-top: 15px;
 }
 
 .register__submit:hover {
@@ -87,28 +88,47 @@
   color: #2be080;
 }
 
-.register__input-error {
+.register__input:invalid {
   color: #ee3465;
+}
+
+.register__error-message {
+  opacity: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 320px;
+  text-align: center;
+  color: #ee3465;
+  margin: 81px auto 16px;
+}
+
+.register__error-message_active {
+  opacity: 1;
 }
 
 .register__form-error {
   opacity: 0;
-  margin: 0;
   color: #ee3465;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  height: 24px;
 }
 
-.register__form-error_visible {
+.register__input:invalid + .register__form-error {
   opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
+.register__submit:disabled {
+  background-color: #a0a0a0;
+}
+
+@media screen and (max-width: 430px) {
   .register__logo {
     margin: 56px auto 50px;
   }
@@ -121,8 +141,10 @@
     max-width: 260px;
   }
   .register__submit {
-    margin-top: 215px;
     font-size: 12px;
+  }
+  .register__error-message {
+    margin-top: 149px;
   }
   .register__text {
     margin-top: 14px;

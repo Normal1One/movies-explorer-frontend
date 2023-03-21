@@ -1,27 +1,31 @@
+import classNames from 'classnames'
+import { Link, NavLink } from 'react-router-dom'
 import './Navigation.css'
 
-function Navigation({ isMenuOpen, handleMenuOpen }) {
+function Navigation({ isMenuOpen, handleMenuClose }) {
   return (
-    <div className={`navigation ${isMenuOpen ? 'navigation_opened' : ''}`}>
+    <div
+      className={classNames('navigation', { navigation_opened: isMenuOpen })}
+    >
       <div className='navigation__background'></div>
       <div className='navigation__overlay'>
         <button
           className='navigation__button'
-          onClick={handleMenuOpen}
+          onClick={handleMenuClose}
         ></button>
         <div className='navigation__links'>
-          <a href='/' className='navigation__link'>
+          <NavLink to='/' className='navigation__link'>
             Главная
-          </a>
-          <a href='/movies' className='navigation__films'>
+          </NavLink>
+          <NavLink to='/movies' className='navigation__link'>
             Фильмы
-          </a>
-          <a href='/saved-movies' className='navigation__link'>
+          </NavLink>
+          <NavLink to='/saved-movies' className='navigation__link'>
             Сохранённые фильмы
-          </a>
-          <a href='/profile' className='navigation__account'>
+          </NavLink>
+          <Link to='/profile' className='navigation__account'>
             Аккаунт
-          </a>
+          </Link>
         </div>
       </div>
     </div>

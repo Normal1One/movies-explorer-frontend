@@ -57,7 +57,7 @@
   margin-top: 19px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .portfolio {
     max-width: 668px;
     margin-top: 90px;

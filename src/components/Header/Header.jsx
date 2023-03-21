@@ -1,40 +1,38 @@
+import { Link, NavLink } from 'react-router-dom'
 import './Header.css'
 
 function Header({ loggedIn, handleMenuOpen }) {
-  if (!loggedIn) {
+  if (loggedIn) {
     return (
       <header className='header'>
-        <a href='/'>
+        <Link to='/'>
           <div className='header__logo'></div>
-        </a>
-        <a href='/movies' className='header__link header__link_films'>
+        </Link>
+        <NavLink to='/movies' className='header__link header__link_films'>
           Фильмы
-        </a>
-        <a
-          href='/saved-movies'
-          className='header__link header__link_films-favorite'
-        >
+        </NavLink>
+        <NavLink to='/saved-movies' className='header__link'>
           Сохранённые фильмы
-        </a>
-        <a href='/profile' className='header__account'>
+        </NavLink>
+        <Link to='/profile' className='header__account'>
           Аккаунт
-        </a>
+        </Link>
         <button className='header__hamburger' onClick={handleMenuOpen} />
       </header>
     )
   }
   return (
     <header className='header'>
-      <a href='/'>
+      <Link to='/'>
         <div className='header__logo'></div>
-      </a>
+      </Link>
       <div className='header__links'>
-        <a href='/signup' className='header__register-button'>
+        <Link to='/signup' className='header__register-button'>
           Регистрация
-        </a>
-        <a href='/signin' className='header__login-button'>
+        </Link>
+        <Link to='/signin' className='header__login-button'>
           Войти
-        </a>
+        </Link>
       </div>
     </header>
   )

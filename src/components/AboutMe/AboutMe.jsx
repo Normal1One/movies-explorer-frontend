@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './AboutMe.css'
 
 function AboutMe() {
@@ -19,14 +20,14 @@ function AboutMe() {
             Контур». После того, как прошёл курс по веб-разработке, начал
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a
+          <Link
             target='_blank'
-            href='https://github.com/Normal1One'
+            to='https://github.com/Normal1One'
             className='aboutMe__link'
             rel='noreferrer'
           >
             Github
-          </a>
+          </Link>
         </div>
       </div>
     </section>

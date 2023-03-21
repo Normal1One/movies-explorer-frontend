@@ -1,9 +1,11 @@
 import './MoviesPreloader.css'
 
-function MoviesPreloader() {
+function MoviesPreloader({ handleClick }) {
   return (
     <div className='moviesPreloader'>
-      <button className='moviesPreloader__button'>Ещё</button>
+      <button className='moviesPreloader__button' onClick={handleClick}>
+        Ещё
+      </button>
     </div>
   )
 }

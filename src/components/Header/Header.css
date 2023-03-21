@@ -63,20 +63,18 @@
   text-decoration: none;
   color: #000000;
   font-style: normal;
+  font-size: 13px;
+  line-height: 32px;
+  font-weight: 400;
 }
 
 .header__link_films {
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 32px;
   margin-left: 44px;
   margin-right: 16px;
 }
 
-.header__link_films-favorite {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 32px;
+.header__link.active {
+  font-weight: 500;
 }
 
 .header__link_films:hover,
@@ -100,29 +98,19 @@
   border-radius: 20px;
   width: 100px;
   text-align: center;
+  margin-left: auto;
 }
 
-.header__link_films-favorite {
-  margin-right: auto;
-}
-
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 769px) {
   .header {
-    max-width: 1024px;
+    max-width: 708px;
   }
-  .header__link_films,
-  .header__link_films-favorite,
+  .header__link,
   .header__account {
     display: none;
   }
   .header__hamburger {
     display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    max-width: 708px;
   }
 }
 

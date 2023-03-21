@@ -63,12 +63,15 @@
   font-size: 14px;
   line-height: 45px;
   color: #ffffff;
-  margin-top: 196px;
   cursor: pointer;
 }
 
 .login__submit:hover {
   opacity: 0.75;
+}
+
+.login__submit:disabled {
+  background-color: #a0a0a0;
 }
 
 .login__text {
@@ -87,28 +90,43 @@
   color: #2be080;
 }
 
-.login__input_error {
+.login__input:invalid {
   color: #ee3465;
 }
 
 .login__form-error {
   opacity: 0;
-  margin: 0;
   color: #ee3465;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  height: 24px;
 }
 
-.login__form-error_visible {
+.login__input:invalid + .login__form-error {
   opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
+.login__error-message {
+  opacity: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 320px;
+  text-align: center;
+  color: #ee3465;
+  margin: 162px auto 16px;
+}
+
+.login__error-message_active {
+  opacity: 1;
+}
+
+@media screen and (max-width: 430px) {
   .login__logo {
     margin: 56px auto 50px;
   }
@@ -120,8 +138,10 @@
     margin: 0 auto;
     max-width: 260px;
   }
+  .login__error-message {
+    margin-top: 234px;
+  }
   .login__submit {
-    margin-top: 284px;
     font-size: 12px;
   }
   .login__text {

@@ -36,8 +36,7 @@
   margin-top: 156px;
 }
 
-.navigation__link,
-.navigation__films {
+.navigation__link {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -47,13 +46,12 @@
 }
 
 .navigation__link,
-.navigation__films,
 .navigation__account {
   text-decoration: none;
   color: #000000;
 }
 
-.navigation__films {
+.navigation__link.active {
   text-decoration: underline #000000 2px;
   text-underline-offset: 4px;
 }
@@ -90,7 +88,6 @@
 }
 
 .navigation__link:hover,
-.navigation__films:hover,
 .navigation__button:hover,
 .navigation__account:hover {
   opacity: 0.75;
@@ -102,7 +99,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .navigation__overlay {
     width: 320px;
   }
@@ -115,11 +112,10 @@
     top: calc(100vh - 230px);
     left: 105px;
   }
-  .navigation__link,
-  .navigation__films {
+  .navigation__link {
     margin-bottom: 24px;
   }
-  .navigation__films {
+  .navigation__link_active {
     text-underline-offset: 11px;
   }
 }

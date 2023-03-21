@@ -1,6 +1,9 @@
 .footer {
   padding-top: 79px;
   background-color: #fafafa;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer__title {
@@ -59,7 +62,7 @@
   margin-left: auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .footer__links,
   .footer__line {
     max-width: 708px;
@@ -67,10 +70,6 @@
 }
 
 @media screen and (max-width: 320px) {
-  .footer {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
   .footer__links {
     display: block;
     padding: 0;
