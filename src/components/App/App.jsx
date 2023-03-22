@@ -25,7 +25,7 @@ import {
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Preloader from '../Preloader/Preloader'
-import { isShort } from '../MoviesFilter/MoviesFilter'
+import { filterMovies } from '../MoviesFilter/MoviesFilter'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,44 +40,48 @@ function App() {
 
   const handleSearchMovies = (searchValue, isChecked) => {
     try {
-      const moviesData =
-        location.pathname === '/movies'
-          ? JSON.parse(sessionStorage.getItem('movies'))
-          : savedMovies
-      const filteredMovies = moviesData
-        .filter((movie) => isShort(movie, isChecked))
-        .filter(
-          (movie) =>
-            movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) ||
-            movie.nameEN.toLowerCase().includes(searchValue.toLowerCase())
-        )
-      updateSessionStorage(filteredMovies, searchValue, isChecked)
+      updateMoviesSessionStorage(
+        filterMovies(
+          location.pathname === '/movies'
+            ? JSON.parse(sessionStorage.getItem('movies'))
+            : savedMovies,
+          isChecked,
+          searchValue,
+          location.pathname === '/movies'
+        ),
+        searchValue,
+        isChecked
+      )
       window.dispatchEvent(new Event('storage'))
     } catch {
-      sessionStorage.setItem('moviesStatus', 'error')
+      sessionStorage.setItem(
+        location.pathname === '/movies' ? 'moviesStatus' : 'savedMoviesStatus',
+        'error'
+      )
     }
   }
 
-  const updateSessionStorage = (filteredMovies, searchValue, isChecked) => {
-    sessionStorage.removeItem('moviesStatus')
-    sessionStorage.removeItem('savedMoviesStatus')
+  const updateMoviesSessionStorage = (
+    filteredMovies,
+    searchValue,
+    isChecked
+  ) => {
+    sessionStorage.removeItem(
+      location.pathname === '/movies' ? 'moviesStatus' : 'savedMoviesStatus'
+    )
     sessionStorage.setItem('checkedStatus', isChecked)
     sessionStorage.setItem('searchValue', searchValue)
+    sessionStorage.setItem(
+      location.pathname === '/movies'
+        ? 'filteredMovies'
+        : 'filteredSavedMovies',
+      JSON.stringify(filteredMovies)
+    )
     if (filteredMovies.length === 0) {
       sessionStorage.setItem(
-        location.pathname === '/saved-movies'
-          ? 'savedMoviesStatus'
-          : 'moviesStatus',
+        location.pathname === '/movies' ? 'moviesStatus' : 'savedMoviesStatus',
         'none'
       )
-    }
-    if (location.pathname === '/saved-movies') {
-      sessionStorage.setItem(
-        'filteredSavedMovies',
-        JSON.stringify(filteredMovies)
-      )
-    } else {
-      sessionStorage.setItem('filteredMovies', JSON.stringify(filteredMovies))
     }
   }
 
@@ -131,6 +135,14 @@ function App() {
     try {
       const response = await createMovie(movie)
       setSavedMovies([response, ...savedMovies])
+      sessionStorage.removeItem('savedMoviesStatus')
+      sessionStorage.setItem(
+        'filteredSavedMovies',
+        JSON.stringify([
+          response,
+          ...JSON.parse(sessionStorage.getItem('filteredSavedMovies')),
+        ])
+      )
     } catch (err) {
       console.log(err)
     }
@@ -140,6 +152,15 @@ function App() {
     try {
       await deleteMovie(movieId)
       setSavedMovies(savedMovies.filter((m) => m.movieId !== movieId))
+      sessionStorage.setItem(
+        'filteredSavedMovies',
+        JSON.stringify(
+          JSON.parse(sessionStorage.getItem('filteredSavedMovies')).filter(
+            (m) => m.movieId !== movieId
+          )
+        )
+      )
+      window.dispatchEvent(new Event('storage'))
     } catch (err) {
       console.log(err)
     }

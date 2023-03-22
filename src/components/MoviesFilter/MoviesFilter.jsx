@@ -5,6 +5,16 @@ export const isShort = (movie, isChecked) => {
   return movie
 }
 
+export const filterMovies = (moviesData, isChecked, searchValue) => {
+  return moviesData
+    .filter((movie) => isShort(movie, isChecked))
+    .filter(
+      (movie) =>
+        movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(searchValue.toLowerCase())
+    )
+}
+
 export const filterSliceMovies = (filteredMovies, sliceCount) => {
   return filteredMovies.slice(0, sliceCount)
 }
