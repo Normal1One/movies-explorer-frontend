@@ -1,8 +1,8 @@
-import './MoviesCard.css'
+import styles from './MoviesCard.module.css'
 import { Link, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 
-function MoviesCard({
+export default function MoviesCard({
   movie,
   saveMovieHandler,
   deleteMovieHandler,
@@ -35,19 +35,21 @@ function MoviesCard({
   }
 
   return (
-    <div className='moviesCard'>
-      <div className='moviesCard__text'>
-        <p className='moviesCard__title'>{movie.nameRU}</p>
-        <p className='moviesCard__duration'>
+    <div className={styles.moviesCard}>
+      <div className={styles.moviesCard__text}>
+        <p className={styles.moviesCard__title}>{movie.nameRU}</p>
+        <p className={styles.moviesCard__duration}>
           {Math.floor(movie.duration / 60) === 0
             ? `${movie.duration}м`
             : `${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`}
         </p>
       </div>
       <button
-        className={classNames('moviesCard__button', {
-          moviesCard__button_favorites: location.pathname === '/saved-movies',
-          moviesCard__button_liked: isSaved && location.pathname === '/movies',
+        className={classNames(styles.moviesCard__button, {
+          [styles.moviesCard__button_favorites]:
+            location.pathname === '/saved-movies',
+          [styles.moviesCard__button_liked]:
+            isSaved && location.pathname === '/movies',
         })}
         onClick={handleClick}
       />
@@ -59,11 +61,9 @@ function MoviesCard({
               : movie.image
           }
           alt={movie.nameRU}
-          className='moviesCard__image'
+          className={styles.moviesCard__image}
         ></img>
       </Link>
     </div>
   )
 }
-
-export default MoviesCard

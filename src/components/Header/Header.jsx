@@ -1,41 +1,51 @@
 import { Link, NavLink } from 'react-router-dom'
-import './Header.css'
+import styles from './Header.module.css'
 
-function Header({ loggedIn, handleMenuOpen }) {
-  if (loggedIn) {
-    return (
-      <header className='header'>
-        <Link to='/'>
-          <div className='header__logo'></div>
-        </Link>
-        <NavLink to='/movies' className='header__link header__link_films'>
-          Фильмы
-        </NavLink>
-        <NavLink to='/saved-movies' className='header__link'>
-          Сохранённые фильмы
-        </NavLink>
-        <Link to='/profile' className='header__account'>
-          Аккаунт
-        </Link>
-        <button className='header__hamburger' onClick={handleMenuOpen} />
-      </header>
-    )
-  }
+export default function Header({ loggedIn, handleMenuOpen }) {
   return (
-    <header className='header'>
+    <header className={styles.header}>
       <Link to='/'>
-        <div className='header__logo'></div>
+        <div className={styles.header__logo}></div>
       </Link>
-      <div className='header__links'>
-        <Link to='/signup' className='header__register-button'>
-          Регистрация
-        </Link>
-        <Link to='/signin' className='header__login-button'>
-          Войти
-        </Link>
-      </div>
+      {loggedIn && (
+        <>
+          <NavLink
+            to='/movies'
+            className={({ isActive }) =>
+              `${styles.header__link} ${styles.header__link_films} ${
+                isActive && styles.header__link_active
+              }`
+            }
+          >
+            Фильмы
+          </NavLink>
+          <NavLink
+            to='/saved-movies'
+            className={({ isActive }) =>
+              `${styles.header__link} ${isActive && styles.header__link_active}`
+            }
+          >
+            Сохранённые фильмы
+          </NavLink>
+          <Link to='/profile' className={styles.header__account}>
+            Аккаунт
+          </Link>
+          <button
+            className={styles.header__hamburger}
+            onClick={handleMenuOpen}
+          />
+        </>
+      )}
+      {!loggedIn && (
+        <div className={styles.header__links}>
+          <Link to='/signup' className={styles['header__register-button']}>
+            Регистрация
+          </Link>
+          <Link to='/signin' className={styles['header__login-button']}>
+            Войти
+          </Link>
+        </div>
+      )}
     </header>
   )
 }
-
-export default Header

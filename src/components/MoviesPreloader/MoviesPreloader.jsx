@@ -1,13 +1,11 @@
-import './MoviesPreloader.css'
+import styles from './MoviesPreloader.module.css'
 
-function MoviesPreloader({ handleClick }) {
+export default function MoviesPreloader({ handleClick }) {
   return (
-    <div className='moviesPreloader'>
-      <button className='moviesPreloader__button' onClick={handleClick}>
+    <div className={styles.moviesPreloader}>
+      <button className={styles.moviesPreloader__button} onClick={handleClick}>
         Ещё
       </button>
     </div>
   )
 }
-
-export default MoviesPreloader

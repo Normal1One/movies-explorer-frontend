@@ -51,7 +51,7 @@
   color: #000000;
 }
 
-.navigation__link.active {
+.navigation__link_active {
   text-decoration: underline #000000 2px;
   text-underline-offset: 4px;
 }

@@ -1,10 +1,12 @@
-import './SearchForm.css'
+import styles from './SearchForm.module.css'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
-function SearchForm({ searchMoviesHandler }) {
+export default function SearchForm({ searchMoviesHandler }) {
   const [formValue, setFormValue] = useState('')
   const [isChecked, setIsChecked] = useState(false)
+  const location = useLocation()
 
   const handleInputChange = (evt) => {
     setFormValue(evt.target.value)
@@ -20,20 +22,28 @@ function SearchForm({ searchMoviesHandler }) {
   }
 
   useEffect(() => {
-    setFormValue(sessionStorage.getItem('searchValue'))
-    setIsChecked(JSON.parse(sessionStorage.getItem('checkedStatus')) || false)
-  }, [])
+    setFormValue(
+      location.pathname === '/movies'
+        ? sessionStorage.getItem('searchValue')
+        : ''
+    )
+    setIsChecked(
+      location.pathname === '/movies'
+        ? JSON.parse(sessionStorage.getItem('checkedStatus')) || false
+        : false
+    )
+  }, [location.pathname])
 
   return (
-    <div className='searchForm'>
+    <div className={styles.searchForm}>
       <form
-        className='searchForm__form'
-        id='searchForm__form'
+        className={styles.searchForm__form}
+        id={styles.searchForm__form}
         onSubmit={handleSubmit}
       >
-        <div className='searchForm__icon'></div>
+        <div className={styles.searchForm__icon}></div>
         <input
-          className='searchForm__input'
+          className={styles.searchForm__input}
           type='text'
           placeholder='Фильм'
           required
@@ -42,19 +52,17 @@ function SearchForm({ searchMoviesHandler }) {
           onChange={handleInputChange}
         />
         <button
-          className='searchForm__submit'
+          className={styles.searchForm__submit}
           type='submit'
-          form='searchForm__form'
+          form={styles.searchForm__form}
         ></button>
-        <div className='searchForm__line'></div>
+        <div className={styles.searchForm__line}></div>
         <FilterCheckbox
           checkHandler={handleCheckboxChange}
           isChecked={isChecked}
         />
       </form>
-      <div className='searchForm__line-bottom'></div>
+      <div className={styles['searchForm__line-bottom']}></div>
     </div>
   )
 }
-
-export default SearchForm

@@ -72,9 +72,6 @@
 }
 
 @media screen and (max-width: 769px) {
-  .searchForm__input {
-    max-width: 160px;
-  }
   .searchForm {
     max-width: 708px;
   }

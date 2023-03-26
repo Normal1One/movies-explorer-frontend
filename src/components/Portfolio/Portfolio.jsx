@@ -1,50 +1,50 @@
 import { Link } from 'react-router-dom'
-import './Portfolio.css'
+import styles from './Portfolio.module.css'
 
-function Portfolio() {
+export default function Portfolio() {
   return (
-    <section className='portfolio'>
-      <p className='portfolio__title'>Портфолио</p>
-      <ul className='portfolio__projects'>
-        <li className='portfolio__link'>
+    <section className={styles.portfolio}>
+      <p className={styles.portfolio__title}>Портфолио</p>
+      <ul className={styles.portfolio__projects}>
+        <li className={styles.portfolio__link}>
           <Link
             target='_blank'
             to='https://github.com/Normal1One/mesto'
-            className='portfolio__project'
+            className={styles.portfolio__project}
             rel='noreferrer'
           >
-            <p className='portfolio__heading'>Статичный сайт</p>
-            <div className='portfolio__link-image'></div>
+            <p className={styles.portfolio__heading}>Статичный сайт</p>
+            <div className={styles['portfolio__link-image']}></div>
           </Link>
-          <div className='portfolio__projects-line'></div>
+          <div className={styles['portfolio__projects-line']}></div>
         </li>
-        <li className='portfolio__link'>
+        <li className={styles.portfolio__link}>
           <Link
             target='_blank'
             to='https://github.com/Normal1One/russian-travel'
-            className='portfolio__project'
+            className={styles.portfolio__project}
             rel='noreferrer'
           >
-            <p className='portfolio__heading'>Адаптивный сайт</p>
-            <div className='portfolio__link-image'></div>
+            <p className={styles.portfolio__heading}>Адаптивный сайт</p>
+            <div className={styles['portfolio__link-image']}></div>
           </Link>
-          <div className='portfolio__projects-line'></div>
+          <div className={styles['portfolio__projects-line']}></div>
         </li>
-        <li className='portfolio__link'>
+        <li className={styles.portfolio__link}>
           <Link
             target='_blank'
             to='https://github.com/Normal1One/react-mesto-api-full'
-            className='portfolio__project'
+            className={styles.portfolio__project}
             rel='noreferrer'
           >
-            <p className='portfolio__heading'>Одностраничное приложение</p>
-            <div className='portfolio__link-image'></div>
+            <p className={styles.portfolio__heading}>
+              Одностраничное приложение
+            </p>
+            <div className={styles['portfolio__link-image']}></div>
           </Link>
-          <div className='portfolio__projects-line'></div>
+          <div className={styles['portfolio__projects-line']}></div>
         </li>
       </ul>
     </section>
   )
 }
-
-export default Portfolio

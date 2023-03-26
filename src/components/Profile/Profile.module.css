@@ -9,11 +9,13 @@
   margin: 66px auto 123px;
 }
 
-.profile__form {
+.profile__fieldset {
   display: flex;
   flex-direction: column;
-  max-width: 410px;
+  max-width: 420px;
   margin: 0 auto;
+  padding: 0;
+  border: none;
 }
 
 .profile__input {
@@ -29,6 +31,10 @@
   text-align: right;
   flex: 1 1;
   max-width: 360px;
+}
+
+.profile__input:disabled {
+  background-color: #ffffff;
 }
 
 .profile__input:invalid {
@@ -123,7 +129,7 @@
     margin-top: 229px;
     margin-bottom: 97px;
   }
-  .profile__form {
+  .profile__fieldset {
     max-width: 410px;
   }
   .profile__message {
@@ -139,7 +145,7 @@
   .profile__divider {
     width: 260px;
   }
-  .profile__form {
+  .profile__fieldset {
     max-width: 260px;
   }
   .profile__message {

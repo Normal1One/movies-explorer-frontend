@@ -1,4 +1,3 @@
-import './App.css'
 import Main from '../Main/Main'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -25,14 +24,15 @@ import {
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Preloader from '../Preloader/Preloader'
-import { filterMovies } from '../MoviesFilter/MoviesFilter'
+import { SHORT_MOVIE_LENGTH } from '../../utils/constants'
 
-function App() {
+export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [isSuccessfully, setIsSuccessfully] = useState(true)
   const [isUserChanged, setIsUserChanged] = useState(false)
   const [savedMovies, setSavedMovies] = useState([])
+  const [filteredSavedMovies, setFilteredSavedMovies] = useState([])
   const [currentUser, setCurrentUser] = useState({})
   const isLoggedIn = JSON.parse(sessionStorage.getItem('isLoggedIn'))
   const navigate = useNavigate()
@@ -40,48 +40,46 @@ function App() {
 
   const handleSearchMovies = (searchValue, isChecked) => {
     try {
-      updateMoviesSessionStorage(
-        filterMovies(
-          location.pathname === '/movies'
-            ? JSON.parse(sessionStorage.getItem('movies'))
-            : savedMovies,
-          isChecked,
-          searchValue,
-          location.pathname === '/movies'
-        ),
-        searchValue,
-        isChecked
-      )
+      const moviesData =
+        location.pathname === '/movies'
+          ? JSON.parse(sessionStorage.getItem('movies'))
+          : savedMovies
+      const filteredMovies = moviesData
+        .filter((movie) => isShort(movie, isChecked))
+        .filter(
+          (movie) =>
+            movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) ||
+            movie.nameEN.toLowerCase().includes(searchValue.toLowerCase())
+        )
+      location.pathname === '/movies'
+        ? updateSessionStorage(filteredMovies, searchValue, isChecked)
+        : saveMovies(filteredMovies)
       window.dispatchEvent(new Event('storage'))
     } catch {
-      sessionStorage.setItem(
-        location.pathname === '/movies' ? 'moviesStatus' : 'savedMoviesStatus',
-        'error'
-      )
+      sessionStorage.setItem('moviesStatus', 'error')
+      window.dispatchEvent(new Event('storage'))
     }
   }
 
-  const updateMoviesSessionStorage = (
-    filteredMovies,
-    searchValue,
-    isChecked
-  ) => {
-    sessionStorage.removeItem(
-      location.pathname === '/movies' ? 'moviesStatus' : 'savedMoviesStatus'
-    )
+  const isShort = (movie, isChecked) => {
+    return !JSON.parse(isChecked) ? movie.duration >= SHORT_MOVIE_LENGTH : movie
+  }
+
+  const updateSessionStorage = (filteredMovies, searchValue, isChecked) => {
+    sessionStorage.removeItem('moviesStatus')
     sessionStorage.setItem('checkedStatus', isChecked)
     sessionStorage.setItem('searchValue', searchValue)
-    sessionStorage.setItem(
-      location.pathname === '/movies'
-        ? 'filteredMovies'
-        : 'filteredSavedMovies',
-      JSON.stringify(filteredMovies)
-    )
+    sessionStorage.setItem('filteredMovies', JSON.stringify(filteredMovies))
     if (filteredMovies.length === 0) {
-      sessionStorage.setItem(
-        location.pathname === '/movies' ? 'moviesStatus' : 'savedMoviesStatus',
-        'none'
-      )
+      sessionStorage.setItem('moviesStatus', 'none')
+    }
+  }
+
+  const saveMovies = (filteredMovies) => {
+    sessionStorage.removeItem('savedMoviesStatus')
+    setFilteredSavedMovies(filteredMovies)
+    if (filteredMovies.length === 0) {
+      sessionStorage.setItem('savedMoviesStatus', 'none')
     }
   }
 
@@ -96,11 +94,12 @@ function App() {
     }
   }
 
-  const handleLogin = async ({ name, email, password }) => {
+  const handleLogin = async ({ email, password }) => {
     try {
       await login(email, password)
-      setCurrentUser({ name, email })
-      sessionStorage.setItem('isLoggedIn', true)
+      fetchMovies()
+      fetchData()
+      setIsSuccessfully(true)
       navigate('/movies')
     } catch (err) {
       setIsSuccessfully(false)
@@ -110,7 +109,7 @@ function App() {
   const handleRegister = async ({ name, email, password }) => {
     try {
       await register(name, email, password)
-      handleLogin({ name, email, password })
+      handleLogin({ email, password })
     } catch (err) {
       setIsSuccessfully(false)
     }
@@ -120,6 +119,8 @@ function App() {
     try {
       await logout()
       setCurrentUser({})
+      setIsSuccessfully(true)
+      sessionStorage.clear()
       sessionStorage.setItem('isLoggedIn', false)
       navigate('/')
     } catch (err) {
@@ -135,14 +136,7 @@ function App() {
     try {
       const response = await createMovie(movie)
       setSavedMovies([response, ...savedMovies])
-      sessionStorage.removeItem('savedMoviesStatus')
-      sessionStorage.setItem(
-        'filteredSavedMovies',
-        JSON.stringify([
-          response,
-          ...JSON.parse(sessionStorage.getItem('filteredSavedMovies')),
-        ])
-      )
+      setFilteredSavedMovies([response, ...savedMovies])
     } catch (err) {
       console.log(err)
     }
@@ -152,15 +146,7 @@ function App() {
     try {
       await deleteMovie(movieId)
       setSavedMovies(savedMovies.filter((m) => m.movieId !== movieId))
-      sessionStorage.setItem(
-        'filteredSavedMovies',
-        JSON.stringify(
-          JSON.parse(sessionStorage.getItem('filteredSavedMovies')).filter(
-            (m) => m.movieId !== movieId
-          )
-        )
-      )
-      window.dispatchEvent(new Event('storage'))
+      setFilteredSavedMovies(savedMovies.filter((m) => m.movieId !== movieId))
     } catch (err) {
       console.log(err)
     }
@@ -182,12 +168,18 @@ function App() {
         getUser(),
       ])
       setSavedMovies(savedMovies)
+      setFilteredSavedMovies(savedMovies)
+      sessionStorage.removeItem('savedMoviesStatus')
       setCurrentUser(user)
       sessionStorage.setItem('isLoggedIn', true)
     } catch (err) {
       console.log(err)
     }
   }
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location.pathname])
 
   useEffect(() => {
     try {
@@ -270,6 +262,7 @@ function App() {
                   saveMovieHandler={saveMovieHandler}
                   deleteMovieHandler={deleteMovieHandler}
                   savedMovies={savedMovies}
+                  filteredSavedMovies={filteredSavedMovies}
                 />
                 <Footer />
                 <Navigation
@@ -282,20 +275,20 @@ function App() {
           <Route
             path='/signup'
             element={
-              <>
+              <ProtectedRoute loggedIn={!isLoggedIn}>
                 <Register
                   onRegister={handleRegister}
                   isSuccessfully={isSuccessfully}
                 />
-              </>
+              </ProtectedRoute>
             }
           />
           <Route
             path='/signin'
             element={
-              <>
+              <ProtectedRoute loggedIn={!isLoggedIn}>
                 <Login onLogin={handleLogin} isSuccessfully={isSuccessfully} />
-              </>
+              </ProtectedRoute>
             }
           />
           <Route
@@ -311,5 +304,3 @@ function App() {
     </div>
   )
 }
-
-export default App

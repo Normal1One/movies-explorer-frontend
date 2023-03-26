@@ -1,29 +1,52 @@
 import classNames from 'classnames'
 import { Link, NavLink } from 'react-router-dom'
-import './Navigation.css'
+import styles from './Navigation.module.css'
 
-function Navigation({ isMenuOpen, handleMenuClose }) {
+export default function Navigation({ isMenuOpen, handleMenuClose }) {
   return (
     <div
-      className={classNames('navigation', { navigation_opened: isMenuOpen })}
+      className={classNames(styles.navigation, {
+        [styles.navigation_opened]: isMenuOpen,
+      })}
     >
-      <div className='navigation__background'></div>
-      <div className='navigation__overlay'>
+      <div className={styles.navigation__background}></div>
+      <div className={styles.navigation__overlay}>
         <button
-          className='navigation__button'
+          className={styles.navigation__button}
           onClick={handleMenuClose}
         ></button>
-        <div className='navigation__links'>
-          <NavLink to='/' className='navigation__link'>
+        <div className={styles.navigation__links}>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              `${styles.navigation__link} ${
+                isActive && styles.navigation__link_active
+              }`
+            }
+          >
             Главная
           </NavLink>
-          <NavLink to='/movies' className='navigation__link'>
+          <NavLink
+            to='/movies'
+            className={({ isActive }) =>
+              `${styles.navigation__link} ${
+                isActive && styles.navigation__link_active
+              }`
+            }
+          >
             Фильмы
           </NavLink>
-          <NavLink to='/saved-movies' className='navigation__link'>
+          <NavLink
+            to='/saved-movies'
+            className={({ isActive }) =>
+              `${styles.navigation__link} ${
+                isActive && styles.navigation__link_active
+              }`
+            }
+          >
             Сохранённые фильмы
           </NavLink>
-          <Link to='/profile' className='navigation__account'>
+          <Link to='/profile' className={styles.navigation__account}>
             Аккаунт
           </Link>
         </div>
@@ -31,5 +54,3 @@ function Navigation({ isMenuOpen, handleMenuClose }) {
     </div>
   )
 }
-
-export default Navigation
