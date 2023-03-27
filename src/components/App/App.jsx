@@ -179,7 +179,9 @@ export default function App() {
 
   useEffect(() => {
     setIsMenuOpen(false)
-  }, [location.pathname])
+    setFilteredSavedMovies(savedMovies)
+    sessionStorage.removeItem('savedMoviesStatus')
+  }, [location.pathname, savedMovies])
 
   useEffect(() => {
     try {
