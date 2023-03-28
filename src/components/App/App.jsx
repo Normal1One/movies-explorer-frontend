@@ -87,7 +87,6 @@ export default function App() {
     try {
       await changeUser(name, email)
       setCurrentUser({ name, email })
-      setIsSuccessfully(true)
       setIsUserChanged(true)
     } catch (err) {
       setIsSuccessfully(false)
@@ -99,7 +98,6 @@ export default function App() {
       await login(email, password)
       fetchMovies()
       fetchData()
-      setIsSuccessfully(true)
       navigate('/movies')
     } catch (err) {
       setIsSuccessfully(false)
@@ -119,7 +117,6 @@ export default function App() {
     try {
       await logout()
       setCurrentUser({})
-      setIsSuccessfully(true)
       sessionStorage.clear()
       sessionStorage.setItem('isLoggedIn', false)
       navigate('/')
@@ -181,6 +178,8 @@ export default function App() {
     setIsMenuOpen(false)
     setFilteredSavedMovies(savedMovies)
     sessionStorage.removeItem('savedMoviesStatus')
+    setIsSuccessfully(true)
+    setIsUserChanged(false)
   }, [location.pathname, savedMovies])
 
   useEffect(() => {
