@@ -98,7 +98,7 @@ export default function App() {
       await login(email, password)
       fetchMovies()
       fetchData()
-      navigate('/movies')
+      navigate('/')
     } catch (err) {
       setIsSuccessfully(false)
     }
