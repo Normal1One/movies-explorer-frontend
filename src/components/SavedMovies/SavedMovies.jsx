@@ -1,16 +1,24 @@
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
-import './SavedMovies.css'
 
-function SavedMovies() {
+export default function SavedMovies({
+  searchMoviesHandler,
+  saveMovieHandler,
+  deleteMovieHandler,
+  savedMovies,
+  filteredSavedMovies,
+}) {
   return (
-    <main className='content'>
+    <main>
       <section className='savedMovies'>
-        <SearchForm />
-        <MoviesCardList />
+        <SearchForm searchMoviesHandler={searchMoviesHandler} />
+        <MoviesCardList
+          saveMovieHandler={saveMovieHandler}
+          deleteMovieHandler={deleteMovieHandler}
+          savedMovies={savedMovies}
+          movies={filteredSavedMovies}
+        />
       </section>
     </main>
   )
 }
-
-export default SavedMovies

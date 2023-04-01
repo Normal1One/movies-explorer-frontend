@@ -1,31 +1,56 @@
-import './Navigation.css'
+import classNames from 'classnames'
+import { Link, NavLink } from 'react-router-dom'
+import styles from './Navigation.module.css'
 
-function Navigation({ isMenuOpen, handleMenuOpen }) {
+export default function Navigation({ isMenuOpen, handleMenuClose }) {
   return (
-    <div className={`navigation ${isMenuOpen ? 'navigation_opened' : ''}`}>
-      <div className='navigation__background'></div>
-      <div className='navigation__overlay'>
+    <div
+      className={classNames(styles.navigation, {
+        [styles.navigation_opened]: isMenuOpen,
+      })}
+    >
+      <div className={styles.navigation__background}></div>
+      <div className={styles.navigation__overlay}>
         <button
-          className='navigation__button'
-          onClick={handleMenuOpen}
+          className={styles.navigation__button}
+          onClick={handleMenuClose}
         ></button>
-        <div className='navigation__links'>
-          <a href='/' className='navigation__link'>
+        <div className={styles.navigation__links}>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              `${styles.navigation__link} ${
+                isActive && styles.navigation__link_active
+              }`
+            }
+          >
             Главная
-          </a>
-          <a href='/movies' className='navigation__films'>
+          </NavLink>
+          <NavLink
+            to='/movies'
+            className={({ isActive }) =>
+              `${styles.navigation__link} ${
+                isActive && styles.navigation__link_active
+              }`
+            }
+          >
             Фильмы
-          </a>
-          <a href='/saved-movies' className='navigation__link'>
+          </NavLink>
+          <NavLink
+            to='/saved-movies'
+            className={({ isActive }) =>
+              `${styles.navigation__link} ${
+                isActive && styles.navigation__link_active
+              }`
+            }
+          >
             Сохранённые фильмы
-          </a>
-          <a href='/profile' className='navigation__account'>
+          </NavLink>
+          <Link to='/profile' className={styles.navigation__account}>
             Аккаунт
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   )
 }
-
-export default Navigation

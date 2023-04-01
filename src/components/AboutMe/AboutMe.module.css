@@ -79,17 +79,7 @@
   order: 2;
 }
 
-.aboutMe__portfolio {
-  margin: 0;
-  margin-top: 100px;
-  color: #a0a0a0;
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .aboutMe {
     max-width: 668px;
     margin-top: 90px;
@@ -120,8 +110,6 @@
     margin-bottom: 66px;
   }
 }
-
-
 
 @media screen and (max-width: 690px) {
   .aboutMe {

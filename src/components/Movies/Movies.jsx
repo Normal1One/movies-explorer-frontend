@@ -1,18 +1,28 @@
+import useMoviesFilter from '../../hooks/useMoviesFilter'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import MoviesPreloader from '../MoviesPreloader/MoviesPreloader'
 import SearchForm from '../SearchForm/SearchForm'
-import './Movies.css'
 
-function Movies() {
+export default function Movies({
+  searchMoviesHandler,
+  saveMovieHandler,
+  deleteMovieHandler,
+  savedMovies,
+}) {
+  const [moviesToLoad, slicedMovies, loadMoreMovies] = useMoviesFilter()
+
   return (
-    <main className='content'>
+    <main>
       <section className='movies'>
-        <SearchForm />
-        <MoviesCardList />
-        <MoviesPreloader />
+        <SearchForm searchMoviesHandler={searchMoviesHandler} />
+        <MoviesCardList
+          saveMovieHandler={saveMovieHandler}
+          deleteMovieHandler={deleteMovieHandler}
+          savedMovies={savedMovies}
+          movies={slicedMovies}
+        />
+        {moviesToLoad > 2 && <MoviesPreloader handleClick={loadMoreMovies} />}
       </section>
     </main>
   )
 }
-
-export default Movies

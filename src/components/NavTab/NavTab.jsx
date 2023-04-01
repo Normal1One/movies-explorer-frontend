@@ -1,19 +1,18 @@
-import './NavTab.css'
+import { HashLink } from 'react-router-hash-link'
+import styles from './NavTab.module.css'
 
-function NavTab() {
+export default function NavTab() {
   return (
-    <section className='navTab'>
-      <a href='#about-project' className='navTab__link'>
+    <section className={styles.navTab}>
+      <HashLink smooth to='#about-project' className={styles.navTab__link}>
         О проекте
-      </a>
-      <a href='#techs' className='navTab__link'>
+      </HashLink>
+      <HashLink smooth to='#techs' className={styles.navTab__link}>
         Технологии
-      </a>
-      <a href='#about-me' className='navTab__link'>
+      </HashLink>
+      <HashLink smooth to='#about-me' className={styles.navTab__link}>
         Студент
-      </a>
+      </HashLink>
     </section>
   )
 }
-
-export default NavTab

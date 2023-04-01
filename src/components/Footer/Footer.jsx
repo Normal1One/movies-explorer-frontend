@@ -1,19 +1,25 @@
-import './Footer.css'
+import classNames from 'classnames'
+import styles from './Footer.module.css'
 
-function Footer() {
+export default function Footer() {
   return (
-    <footer className='footer'>
-      <p className='footer__title'>
+    <footer className={styles.footer}>
+      <p className={styles.footer__title}>
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
-      <div className='footer__line'></div>
-      <div className='footer__links'>
-        <p className='footer__link footer__link-practicum'>Яндекс.Практикум</p>
-        <p className='footer__link'>Github</p>
-        <p className='footer__date'>@ {new Date().getFullYear()}</p>
+      <div className={styles.footer__line}></div>
+      <div className={styles.footer__links}>
+        <p
+          className={classNames(
+            styles.footer__link,
+            styles['footer__link-practicum']
+          )}
+        >
+          Яндекс.Практикум
+        </p>
+        <p className={styles.footer__link}>Github</p>
+        <p className={styles.footer__date}>@ {new Date().getFullYear()}</p>
       </div>
     </footer>
   )
 }
-
-export default Footer

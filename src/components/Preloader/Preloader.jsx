@@ -1,13 +1,11 @@
-import './Preloader.css'
+import styles from './Preloader.module.css'
 
-function Preloader() {
+export default function Preloader() {
   return (
-    <div className='preloader'>
-      <div className='preloader__container'>
-        <span className='preloader__round'></span>
+    <div className={styles.preloader}>
+      <div className={styles.preloader__container}>
+        <span className={styles.preloader__round}></span>
       </div>
     </div>
   )
 }
-
-export default Preloader

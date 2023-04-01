@@ -6,14 +6,16 @@
   line-height: 29px;
   max-width: 204px;
   text-align: center;
-  margin: 74px auto 123px;
+  margin: 66px auto 123px;
 }
 
-.profile__form {
+.profile__fieldset {
   display: flex;
   flex-direction: column;
   max-width: 420px;
   margin: 0 auto;
+  padding: 0;
+  border: none;
 }
 
 .profile__input {
@@ -27,6 +29,16 @@
   font-size: 11px;
   line-height: 13px;
   text-align: right;
+  flex: 1 1;
+  max-width: 360px;
+}
+
+.profile__input:disabled {
+  background-color: #ffffff;
+}
+
+.profile__input:invalid {
+  color: #ee3465;
 }
 
 .profile__label {
@@ -52,13 +64,19 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  margin: 220px auto 16px;
+  margin: 16px auto;
   text-align: center;
   appearance: none;
   border: none;
   outline: none;
   background-color: #ffffff;
   cursor: pointer;
+  color: #000000;
+  padding: 0;
+}
+
+.profile__submit:disabled {
+  color: #a0a0a0;
 }
 
 .profile__logout {
@@ -69,9 +87,36 @@
   line-height: 16px;
   text-align: center;
   color: #ee3465;
-  text-decoration: none;
   margin: 0 auto 70px;
   display: block;
+  appearance: none;
+  outline: none;
+  padding: 0;
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.profile__message {
+  opacity: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 320px;
+  text-align: center;
+  margin: 187px auto 16px;
+}
+
+.profile__message_success {
+  color: #2be080;
+  opacity: 1;
+}
+
+.profile__message_error {
+  color: #ee3465;
+  opacity: 1;
 }
 
 .profile__submit:hover,
@@ -79,20 +124,20 @@
   opacity: 0.75;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 769px) {
   .profile__title {
     margin-top: 229px;
     margin-bottom: 97px;
   }
-  .profile__form {
+  .profile__fieldset {
     max-width: 410px;
   }
-  .profile__submit {
-    margin-top: 210px;
+  .profile__message {
+    margin-top: 160px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 430px) {
   .profile__title {
     margin-top: 63px;
     margin-bottom: 80px;
@@ -100,11 +145,13 @@
   .profile__divider {
     width: 260px;
   }
-  .profile__form {
+  .profile__fieldset {
     max-width: 260px;
   }
+  .profile__message {
+    margin-top: 314px;
+  }
   .profile__submit {
-    margin-top: 379px;
     font-size: 12px;
     line-height: 15px;
   }

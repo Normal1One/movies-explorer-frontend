@@ -1,13 +1,12 @@
-import './Main.css'
 import Promo from '../Promo/Promo'
 import AboutProject from '../AboutProject/AboutProject'
 import Techs from '../Techs/Techs'
 import AboutMe from '../AboutMe/AboutMe'
 import Portfolio from '../Portfolio/Portfolio'
 
-function Main() {
+export default function Main() {
   return (
-    <main className='content'>
+    <main>
       <Promo />
       <AboutProject />
       <Techs />
@@ -16,5 +15,3 @@ function Main() {
     </main>
   )
 }
-
-export default Main

@@ -1,35 +1,71 @@
 import classNames from 'classnames'
 import { useLocation } from 'react-router-dom'
 import MoviesCard from '../MoviesCard/MoviesCard'
-import './MoviesCardList.css'
+import styles from './MoviesCardList.module.css'
 
-function MoviesCardList() {
+export default function MoviesCardList({
+  saveMovieHandler,
+  deleteMovieHandler,
+  savedMovies,
+  movies,
+}) {
+  const moviesStatus = sessionStorage.getItem('moviesStatus')
+  const savedMoviesStatus = sessionStorage.getItem('savedMoviesStatus')
   const location = useLocation()
 
   return (
-    <ul
-      className={classNames({
-        moviesCardList: true,
-        moviesCardList_favorites: location.pathname === '/saved-movies',
-      })}
-    >
-      <li>
-        <MoviesCard />
-      </li>
-      <li>
-        <MoviesCard />
-      </li>
-      <li>
-        <MoviesCard />
-      </li>
-      <li>
-        <MoviesCard />
-      </li>
-      <li>
-        <MoviesCard />
-      </li>
-    </ul>
+    <>
+      {location.pathname === '/movies' && (
+        <>
+          {moviesStatus === 'none' && (
+            <div className={styles.moviesCardList__message}>
+              Ничего не найдено
+            </div>
+          )}
+          {moviesStatus === 'error' && (
+            <div className={styles.moviesCardList__message}>
+              Во время запроса произошла ошибка. Возможно, проблема с
+              соединением или сервер недоступен. Подождите немного и попробуйте
+              ещё раз
+            </div>
+          )}
+        </>
+      )}
+      {location.pathname === '/saved-movies' && (
+        <>
+          {savedMoviesStatus === 'none' && (
+            <div className={styles.moviesCardList__message}>
+              Ничего не найдено
+            </div>
+          )}
+          {savedMoviesStatus === 'error' && (
+            <div className={styles.moviesCardList__message}>
+              Во время запроса произошла ошибка. Возможно, проблема с
+              соединением или сервер недоступен. Подождите немного и попробуйте
+              ещё раз
+            </div>
+          )}
+        </>
+      )}
+      {movies.length > 0 && (
+        <ul
+          className={classNames(styles.moviesCardList, {
+            [styles['moviesCardList_favorites']]:
+              location.pathname === '/saved-movies',
+          })}
+        >
+          {movies.map((movie) => (
+            <li key={movie.id}>
+              <MoviesCard
+                movie={movie}
+                saveMovieHandler={saveMovieHandler}
+                deleteMovieHandler={deleteMovieHandler}
+                savedMovies={savedMovies}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   )
 }
-
-export default MoviesCardList
